@@ -58,13 +58,13 @@ func login(region string, accounts []string) error {
 		return err
 	}
 
-	format := "docker login -u AWS -p %s %s\n"
+	format := "%s\n"
 	for _, data := range res.AuthorizationData {
 		password, err := decodeAuth(aws.StringValue(data.AuthorizationToken))
 		if err != nil {
 			return nil
 		}
-		fmt.Printf(format, password, aws.StringValue(data.ProxyEndpoint))
+		fmt.Printf(format, password)
 	}
 	return nil
 }
