@@ -1,3 +1,30 @@
+<details><summary><b>❗️❗️❗️ Dispatch-specific Notes (expand me) ❗️❗️❗️</b></summary>
+
+We have forked this project in order to make some custom changes to the project and to add a Dockerfile.
+
+### To tag on GitHub
+
+```bash
+git tag v1.0.1
+git push --tag
+```
+
+### To build a new Dockerfile and upload to GitHub packages
+
+```bash
+# Set up Go
+go mod init ecr-get-login
+go mod tidy
+go mod vendor
+go build
+
+# Build and push docker image
+docker build -t ghcr.io/dispatchitinc/ecr-get-login:vX.X.X -f Dockerfile .
+docker push ghcr.io/dispatchitinc/ecr-get-login:vX.X.X
+```
+
+</details>
+
 ecr-get-login
 =============
 [![Build Status](https://travis-ci.org/zenreach/ecr-get-login.svg?branch=master)](https://travis-ci.org/zenreach/ecr-get-login)
